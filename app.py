@@ -13,13 +13,13 @@ def load_model():
 model = load_model()
 
 # 2. I-configure ang app
-st.title("AI 7.0: Cats vs Dogs Classifier")
+st.title("AI 7.0: Cat vs Dog Classifier")
 st.write("Nagamit ang **MobileNetV2** bilang pinakamagandang model mula sa aming Transfer Learning Comparison.")
 st.write("Mag-upload ng larawan ng pusa o aso para subukan.")
 
 # 3. Ilagay ang class names (Dapat pareho ng order noong training)
-# Noong nag-training tayo, 'cats' ang unang naload na folder kaya siya index 0
-class_names = ['cats', 'dogs']
+# Noong nag-training tayo, 'cat' ang unang naload na folder kaya siya index 0
+class_names = ['cat', 'dog']
 
 # 4. File Uploader
 uploaded_file = st.file_uploader("Pumili ng larawan...", type=["jpg", "jpeg", "png"])
@@ -45,7 +45,7 @@ if uploaded_file is not None:
         score = predictions[0][0] # Kunin ang score (0.0 to 1.0)
     
     # 7. I-interpret ang result
-    # Dahil sigmoid ang gamit, mas mababa sa 0.5 ay 'cats', mas mataas ay 'dogs'
+    # Dahil sigmoid ang gamit, mas mababa sa 0.5 ay 'cat', mas mataas ay 'dog'
     if score < 0.5:
         predicted_class = class_names[0]
         confidence = (1 - score) * 100
